@@ -1,9 +1,6 @@
 from random import randint
 import sys
-random_bool = False
-trials = 100
-core_count = 3
-user_input = True
+
 
 class processor:
 
@@ -51,13 +48,16 @@ class processor:
         while(True):
             #increment the ticker
             self.tick += 1
-            #main loop for adding jobs to queues
+
+            #manage jobs and queues
             for index, job in enumerate(self.jobs) :
                 job.arrival = job.arrival - 1
                 if(job.arrival == 0):
                     nextCore = (nextCore+1)%self.num_cores
                     queues[nextCore].append(job.time)
                     self.jobs.pop(index)
+
+            #Manage core usage
             for index, core in enumerate(self.cores):
                 busy = core.tick_job()
                 cores_busy[index] = busy
@@ -65,6 +65,8 @@ class processor:
                     if(queues[index]):
                         core.get_job(queues[index][0])
                         queues[index].pop(0)
+
+            #Check for a break case
             if len(self.jobs) == 0:
                 num_queues = len(queues)
                 emtpy_queues = []
@@ -79,10 +81,6 @@ class processor:
                             idle_cores.append("idle")
                     if(num_queues == len(idle_cores)):
                         break
-
-            #print self.tick
-            #failsafe to exit loop, TEMP
-        print self.tick
         return self.tick
     def print_jobs(self):
         for job in self.jobs:
@@ -125,23 +123,38 @@ def makeJob(id, arrival, time):
     Job = job(id, arrival, time)
     return Job
 
-if(user_input):
-    core_count = int(raw_input("Enter number of cores: "))
-    user_rand = raw_input("Use random input? (Y/N) ")
-    if(user_rand == 'Y'):
-        random_bool = True
-    elif(user_rand == 'N'):
-        random_bool = False
-    trials = int(raw_input("Enter number of trials: "))
+#Main function
+def main(user_input, random_bool, trials, core_count):
+    f = open("output.txt", "w")
+    if(user_input):
+        core_count = int(raw_input("Enter number of cores: "))
+        user_rand = raw_input("Use random input? (Y/N) ")
+        if(user_rand == 'Y'):
+            random_bool = True
+        elif(user_rand == 'N'):
+            random_bool = False
+        trials = int(raw_input("Enter number of trials: "))
 
-x = processor(core_count)
-tick_counter = 0
-for z in range(0, trials):
-    current = x.proc_manager(random_bool)
-    tick_counter += current
-    #print current
+    x = processor(core_count)
+    tick_counter = 0
+    f.write("Cores: " + str(core_count) + "\n")
+    f.write("Random data: " + str(random_bool) + "\n")
+    f.write("# of trials: " + str(trials) + "\n\n")
+    f.write("======================================\n\n")
+    for z in range(0, trials):
+        current = x.proc_manager(random_bool)
+        tick_counter += current
+        f.write(str(current) + " ms\n")
+        print str(current) + " ms"
 
-average = tick_counter/trials
-print "======================================"
-print "Average:"
-print average
+    average = tick_counter/trials
+    f.write("======================================\n")
+    f.write("Average: " + str(average) +" ms")
+    print "======================================"
+    print "Average: " + str(average) +" ms"
+    f.close()
+
+
+
+#Call the main function
+main(True, False, 100, 3)
