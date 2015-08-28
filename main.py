@@ -43,9 +43,11 @@ class processor:
         nextCore = self.num_cores - 1
         #Setup a queue of queues for cores to look at
         queues = []
+        cores_busy=[]
         for x in range(0, self.num_cores):
             queue = []
             queues.append(queue)
+            cores_busy.append(True)
         while(True):
             #increment the ticker
             self.tick += 1
@@ -58,6 +60,7 @@ class processor:
                     self.jobs.pop(index)
             for index, core in enumerate(self.cores):
                 busy = core.tick_job()
+                cores_busy[index] = busy
                 if not busy:
                     if(queues[index]):
                         core.get_job(queues[index][0])
@@ -65,11 +68,17 @@ class processor:
             if len(self.jobs) == 0:
                 num_queues = len(queues)
                 emtpy_queues = []
+                idle_cores = []
                 for queue in queues:
                     if not queue:
                         emtpy_queues.append("empty")
+
                 if(num_queues == len(emtpy_queues)):
-                    break
+                    for x in cores_busy:
+                        if x == False:
+                            idle_cores.append("idle")
+                    if(num_queues == len(idle_cores)):
+                        break
 
             #print self.tick
             #failsafe to exit loop, TEMP
