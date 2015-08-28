@@ -1,6 +1,5 @@
 from random import randint
-import sys
-
+import math
 
 class processor:
 
@@ -9,7 +8,6 @@ class processor:
         self.jobs = []
         self.cores = []
         self.num_cores = cores
-
 
         #Core initialization
         for x in range(0,cores):
@@ -125,6 +123,8 @@ def makeJob(id, arrival, time):
 
 #Main function
 def main(user_input, random_bool, trials, core_count):
+    def average(s): return sum(s) * 1.0 / len(s)
+    values = []
     f = open("output.txt", "w")
     if(user_input):
         core_count = int(raw_input("Enter number of cores: "))
@@ -141,20 +141,33 @@ def main(user_input, random_bool, trials, core_count):
     f.write("Random data: " + str(random_bool) + "\n")
     f.write("# of trials: " + str(trials) + "\n\n")
     f.write("======================================\n\n")
+
     for z in range(0, trials):
         current = x.proc_manager(random_bool)
         tick_counter += current
+        values.append(current)
         f.write(str(current) + " ms\n")
         print str(current) + " ms"
 
-    average = tick_counter/trials
-    f.write("======================================\n")
-    f.write("Average: " + str(average) +" ms")
+    minimum = min(values)
+    maximum = max(values)
+    avg = average(values)
+    variance = map(lambda x: (x - avg)**2, values)
+    std_dev = math.sqrt(average(variance))
+
+    f.write("\n======================================\n\n")
+    f.write("Average: " + str(avg) + " ms\n")
+    f.write("Minimum: " + str(minimum) + " ms\n")
+    f.write("Maximum: " + str(maximum) + " ms\n")
+    f.write("Standard deviation: " + str(std_dev) + " ms")
+
     print "======================================"
-    print "Average: " + str(average) +" ms"
+    print "Average: " + str(avg) + " ms"
+    print "Minimum: " + str(minimum) + " ms"
+    print "Maximum: " + str(maximum) + " ms"
+    print "Standard deviation: " + str(std_dev) + " ms"
+
     f.close()
-
-
 
 #Call the main function
 main(True, False, 100, 3)
