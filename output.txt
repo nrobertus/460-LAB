@@ -1,113 +1,14 @@
-Cores: 1
+Cores: 3
 Random data: False
-# of trials: 100
+# of trials: 1
 
 ======================================
 
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
-873 ms
+413 ms
 
 ======================================
 
-Average: 873.0 ms
-Minimum: 873 ms
-Maximum: 873 ms
+Average: 413.0 ms
+Minimum: 413 ms
+Maximum: 413 ms
 Standard deviation: 0.0 ms

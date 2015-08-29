@@ -16,7 +16,7 @@ class processor:
 
     #Function to manage cores and jobs
     def proc_manager(self, rand):
-
+        self.jobs_copy = [];
         if not rand:
             f = open("jobs.txt", 'r')
             jobList = f.read()
@@ -24,13 +24,11 @@ class processor:
             for job in jobList:
                 job = job.split(',')
                 if(len(job) == 3):
-                    newJob = makeJob(int(job[0]), int(job[1]), int(job[2]))
-                    self.jobs.append(newJob)
+                    self.jobs.append(makeJob(int(job[0]), int(job[1]), int(job[2])))
+                    self.jobs_copy.append(makeJob(int(job[0]), int(job[1]), int(job[2])))
         else:
             for i in range(0, 1000):
-                time = randint(0, 500)
-                newJob = makeJob(i+1, i+1, time)
-                self.jobs.append(newJob)
+                self.jobs.append(makeJob(i+1, i+1, randint(0, 500)))
 
         #initialize the ticker
         self.tick = 0
@@ -43,22 +41,27 @@ class processor:
             queue = []
             queues.append(queue)
             cores_busy.append(True)
+        self.jobs_count = 0
         while(True):
             #increment the ticker
             self.tick += 1
 
             #manage jobs and queues
-            for index, job in enumerate(self.jobs) :
+            for index, job in enumerate(self.jobs):
                 job.arrival = job.arrival - 1
                 if(job.arrival == 0):
                     nextCore = (nextCore+1)%self.num_cores
                     queues[nextCore].append(job.time)
                     self.jobs.pop(index)
+                    self.jobs_count += 1
+
 
             #Manage core usage
             for index, core in enumerate(self.cores):
+                print "core: " + str(index)
                 busy = core.tick_job()
                 cores_busy[index] = busy
+
                 if not busy:
                     if(queues[index]):
                         core.get_job(queues[index][0])
@@ -69,6 +72,7 @@ class processor:
                 num_queues = len(queues)
                 emtpy_queues = []
                 idle_cores = []
+
                 for queue in queues:
                     if not queue:
                         emtpy_queues.append("empty")
@@ -79,14 +83,15 @@ class processor:
                             idle_cores.append("idle")
                     if(num_queues == len(idle_cores)):
                         break
+
+        #When the loop breaks, return the time ticked
+        print str(self.jobs_count) + " jobs"
+        for job in self.jobs_copy:
+            print job.time
         return self.tick
-    def print_jobs(self):
-        for job in self.jobs:
-            print job.arrival
 
 class core:
     def __init__(self):
-        self.data = [];
         self.currentJobTime = 0
 
     def get_job(self, job):
@@ -95,17 +100,13 @@ class core:
     def tick_job(self):
         if self.currentJobTime:
             self.currentJobTime = self.currentJobTime - 1
-
+            print "time left: " + str(self.currentJobTime)
             if (self.currentJobTime == 0):
                 return False
             else:
                 return True
         else:
             return False
-    def execute_task(self, steps):
-        while(steps>0):
-            print steps
-            steps  -= 1
 
 class job(object):
     id = 0
@@ -136,7 +137,6 @@ def main(user_input, random_bool, trials, core_count):
         trials = int(raw_input("Enter number of trials: "))
 
     x = processor(core_count)
-    tick_counter = 0
     f.write("Cores: " + str(core_count) + "\n")
     f.write("Random data: " + str(random_bool) + "\n")
     f.write("# of trials: " + str(trials) + "\n\n")
@@ -144,7 +144,6 @@ def main(user_input, random_bool, trials, core_count):
 
     for z in range(0, trials):
         current = x.proc_manager(random_bool)
-        tick_counter += current
         values.append(current)
         f.write(str(current) + " ms\n")
         print str(current) + " ms"
