@@ -16,7 +16,8 @@ class processor:
 
     #Function to manage cores and jobs
     def proc_manager(self, rand):
-        self.jobs_copy = [];
+        self.jobs_copy = []
+        tripped = False
         if not rand:
             f = open("jobs.txt", 'r')
             jobList = f.read()
@@ -51,14 +52,14 @@ class processor:
                 job.arrival = job.arrival - 1
                 if(job.arrival == 0):
                     nextCore = (nextCore+1)%self.num_cores
-                    queues[nextCore].append(job.time)
+                    queues[nextCore].append(job)
                     self.jobs.pop(index)
                     self.jobs_count += 1
 
 
             #Manage core usage
             for index, core in enumerate(self.cores):
-                print "core: " + str(index)
+                #print "core: " + str(index)
                 busy = core.tick_job()
                 cores_busy[index] = busy
 
@@ -69,6 +70,7 @@ class processor:
 
             #Check for a break case
             if len(self.jobs) == 0:
+
                 num_queues = len(queues)
                 emtpy_queues = []
                 idle_cores = []
@@ -82,12 +84,17 @@ class processor:
                         if x == False:
                             idle_cores.append("idle")
                     if(num_queues == len(idle_cores)):
-                        break
+                        if not tripped:
+                            tripped = True
+                        else:
+                            break
+
 
         #When the loop breaks, return the time ticked
-        print str(self.jobs_count) + " jobs"
-        for job in self.jobs_copy:
-            print job.time
+        #print str(self.jobs_count) + " jobs"
+        #for job in self.jobs_copy:
+            #print job.time
+
         return self.tick
 
 class core:
@@ -95,12 +102,11 @@ class core:
         self.currentJobTime = 0
 
     def get_job(self, job):
-        self.currentJobTime = job
-
+        self.currentJobTime = job.time
     def tick_job(self):
         if self.currentJobTime:
             self.currentJobTime = self.currentJobTime - 1
-            print "time left: " + str(self.currentJobTime)
+            #print "time left: " + str(self.currentJobTime)
             if (self.currentJobTime == 0):
                 return False
             else:
