@@ -1,5 +1,8 @@
 from random import randint
 import math
+import time
+start_date = time.strftime("%m_%d_%Y")
+start_time = time.strftime("%H_%M_%S")
 
 class processor:
 
@@ -124,8 +127,9 @@ def makeJob(id, arrival, time):
 #Main function
 def main(user_input, random_bool, trials, core_count):
     def average(s): return sum(s) * 1.0 / len(s)
-    values = []
-    f = open("output.txt", "w")
+    trial_results = []
+    filename = str(start_date) + "_" + str(start_time) + ".txt"
+    f = open(filename, "w")
     if(user_input):
         core_count = int(raw_input("Enter number of cores: "))
         user_rand = raw_input("Use random input? (Y/N) ")
@@ -135,37 +139,48 @@ def main(user_input, random_bool, trials, core_count):
             random_bool = False
         trials = int(raw_input("Enter number of trials: "))
 
+    #initialize the processor with the given number of cores
     x = processor(core_count)
+
+    #print a header to the output file
+    f.write("Date: " + start_date.replace("_", "/") + "\n")
+    f.write("Time: " + start_time.replace("_", ":") + "\n")
     f.write("Cores: " + str(core_count) + "\n")
     f.write("Random data: " + str(random_bool) + "\n")
     f.write("# of trials: " + str(trials) + "\n\n")
     f.write("======================================\n\n")
 
+    #Run the given number of trials and print the output to the file and the console
     for z in range(0, trials):
         current = x.proc_manager(random_bool)
-        values.append(current)
+        trial_results.append(current)
         f.write(str(current) + " ms\n")
         print str(current) + " ms"
 
-    minimum = min(values)
-    maximum = max(values)
-    avg = average(values)
-    variance = map(lambda x: (x - avg)**2, values)
+    #calculate stats on all the trials
+    minimum = min(trial_results)
+    maximum = max(trial_results)
+    avg = average(trial_results)
+    variance = map(lambda x: (x - avg)**2, trial_results)
     std_dev = math.sqrt(average(variance))
 
+    #print the statistics in a footer on the output file and close the file writer
     f.write("\n======================================\n\n")
     f.write("Average: " + str(avg) + " ms\n")
     f.write("Minimum: " + str(minimum) + " ms\n")
     f.write("Maximum: " + str(maximum) + " ms\n")
     f.write("Standard deviation: " + str(std_dev) + " ms")
+    f.close()
 
+    #Print the final summary to the console
     print "======================================"
     print "Average: " + str(avg) + " ms"
     print "Minimum: " + str(minimum) + " ms"
     print "Maximum: " + str(maximum) + " ms"
     print "Standard deviation: " + str(std_dev) + " ms"
 
-    f.close()
 
-#Call the main function
+
+
+#Call the main function with default values to be overwritten by user input
 main(True, False, 100, 3)
