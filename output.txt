@@ -1,14 +1,113 @@
-Cores: 3
+Cores: 1
 Random data: False
-# of trials: 1
+# of trials: 100
 
 ======================================
 
-413 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
+881 ms
 
 ======================================
 
-Average: 413.0 ms
-Minimum: 413 ms
-Maximum: 413 ms
+Average: 881.0 ms
+Minimum: 881 ms
+Maximum: 881 ms
 Standard deviation: 0.0 ms
