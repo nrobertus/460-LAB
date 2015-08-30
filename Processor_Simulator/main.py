@@ -88,13 +88,6 @@ class processor:
                             tripped = True
                         else:
                             break
-
-
-        #When the loop breaks, return the time ticked
-        #print str(self.jobs_count) + " jobs"
-        #for job in self.jobs_copy:
-            #print job.time
-
         return self.tick
 
 class core:
