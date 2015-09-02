@@ -1,0 +1,18 @@
+Date: 09/02/2015
+Time: 09:20:28
+Cores: 3
+Random data: False
+# of trials: 3
+
+======================================
+
+489 ms
+489 ms
+489 ms
+
+======================================
+
+Average: 489.0 ms
+Minimum: 489 ms
+Maximum: 489 ms
+Standard deviation: 0.0 ms

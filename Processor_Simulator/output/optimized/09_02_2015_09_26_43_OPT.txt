@@ -1,0 +1,115 @@
+Date: 09/02/2015
+Time: 09:26:43
+Cores: 3
+Random data: False
+# of trials: 100
+
+======================================
+
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+395 ms
+
+======================================
+
+Average: 395.0 ms
+Minimum: 395 ms
+Maximum: 395 ms
+Standard deviation: 0.0 ms

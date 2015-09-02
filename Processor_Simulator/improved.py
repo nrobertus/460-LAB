@@ -40,40 +40,45 @@ class processor:
         nextCore = self.num_cores - 1
         #Setup a queue of queues for cores to look at
         queues = []
-        cores_busy=[]
+        core_status=[]
+        core_total_time = []
         for x in range(0, self.num_cores):
             queue = []
             queues.append(queue)
-            cores_busy.append(True)
-        self.jobs_count = 0
+            core_status.append(0)
+            core_total_time.append(0)
         while(True):
             #increment the ticker
             self.tick += 1
-
+            #calculate the total time left for each core (remaining time on current job + total time of jobs in queue)
+            for index, core in enumerate(self.cores):
+                core_total_time[index] = 0
+                if(queues[index]):
+                    for job in queues[index]:
+                        core_total_time[index] += job.time
+                core_total_time[index] += core_status[index]
             #manage jobs and queues
             for index, job in enumerate(self.jobs):
                 job.arrival = job.arrival - 1
                 if(job.arrival == 0):
-                    nextCore = (nextCore+1)%self.num_cores
-                    queues[nextCore].append(job)
-                    self.jobs.pop(index)
-                    self.jobs_count += 1
 
+                    core_index = core_total_time.index(min(core_total_time))
+                    queues[core_index].append(job)
+                    self.jobs.pop(index)
 
             #Manage core usage
             for index, core in enumerate(self.cores):
                 #print "core: " + str(index)
                 busy = core.tick_job()
-                cores_busy[index] = busy
+                core_status[index] = busy
 
-                if not busy:
+                if busy == 0:
                     if(queues[index]):
                         core.get_job(queues[index][0])
                         queues[index].pop(0)
 
             #Check for a break case
             if len(self.jobs) == 0:
-
                 num_queues = len(queues)
                 emtpy_queues = []
                 idle_cores = []
@@ -83,8 +88,8 @@ class processor:
                         emtpy_queues.append("empty")
 
                 if(num_queues == len(emtpy_queues)):
-                    for x in cores_busy:
-                        if x == False:
+                    for x in core_status:
+                        if x == 0:
                             idle_cores.append("idle")
                     if(num_queues == len(idle_cores)):
                         if not tripped:
@@ -103,12 +108,9 @@ class core:
         if self.currentJobTime:
             self.currentJobTime = self.currentJobTime - 1
             #print "time left: " + str(self.currentJobTime)
-            if (self.currentJobTime == 0):
-                return False
-            else:
-                return True
+            return self.currentJobTime
         else:
-            return False
+            return 0
 
 class job(object):
     id = 0
@@ -128,7 +130,7 @@ def makeJob(id, arrival, time):
 def main(user_input, random_bool, trials, core_count):
     def average(s): return sum(s) * 1.0 / len(s)
     trial_results = []
-    filename = "output/round_robin/" + str(start_date) + "_" + str(start_time) + ".txt"
+    filename = "output/optimized/"+str(start_date) + "_" + str(start_time) + "_OPT.txt"
     f = open(filename, "w")
     if(user_input):
         core_count = int(raw_input("Enter number of cores: "))
