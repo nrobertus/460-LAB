@@ -179,8 +179,5 @@ def main(user_input, random_bool, trials, core_count):
     print "Maximum: " + str(maximum) + " ms"
     print "Standard deviation: " + str(std_dev) + " ms"
 
-
-
-
 #Call the main function with default values to be overwritten by user input
 main(True, False, 100, 3)
