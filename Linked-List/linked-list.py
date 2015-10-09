@@ -3,6 +3,7 @@ import threading
 import sys
 import time
 from random import randint
+from threading import Thread, Lock
 
 #DEFINES
 LIST_LIMIT = 20
@@ -10,6 +11,7 @@ INT_LIMIT = 40
 
 t_end = time.time() + 10 #duration in seconds
 
+lock = Lock() # Threading lock
 
 #LINKED LIST IMPLEMENTATION
 class Node(object):
@@ -49,56 +51,24 @@ class DoubleList(object):
                 return False
         else:
             print "Append refused: list too long."
+            sys.exit()
             return False
  
-    def remove(self, even):
+    def remove(self, node_value):
         current_node = self.head
-        even_ness = ''
+ 
         while current_node is not None:
-            if not even:
-                even_ness = "Odd"
-                if((current_node.data%2) != 0):
-                    if self.head == self.tail:  # If the list is only one node long
-                        self.head = None        # delete the node
-                        print (even_ness + " node removed")
-                        return True
-                    elif self.head == current_node: 
-                        self.head = current_node.next
-                        print (even_ness + " node removed")
-                        return True
-                    elif self.tail == current_node:
-                        current_node.prev.next = None
-                        print (even_ness + " node removed")
-                        return True
-                    else:
-                        current_node.prev.next = current_node.next
-                        current_node.next.prev = current_node.prev
-                        print (even_ness + " node removed")
-                        return True
+            if (current_node.data%2) == node_value:
+                # if it's not the first element
+                if current_node.prev is not None:
+                    current_node.prev.next = current_node.next
+                    current_node.next.prev = current_node.prev
                 else:
-                    current_node = current_node.next
-            else:
-                even_ness = "Even"
-                if((current_node.data%2) == 0):
-                    if self.head == self.tail:
-                        self.head = None
-                        print (even_ness + " node removed")
-                        return True
-                    if self.head == current_node:
-                        self.head = current_node.next
-                        print (even_ness + " node removed")
-                        return True
-                    elif self.tail == current_node:
-                        current_node.prev.next = None
-                        print (even_ness + " node removed")
-                        return True
-                    else:
-                        current_node.prev.next = current_node.next
-                        current_node.next.prev = current_node.prev
-                        print (even_ness + " node removed")
-                        return True
-                else:
-                    current_node = current_node.next
+                    # otherwise we have no prev (it's None), head is the next one, and prev becomes None
+                    self.head = current_node.next
+                    current_node.next.prev = None
+
+            current_node = current_node.next
     def show(self):
         print ("Current list -> "),
         current_node = self.head
@@ -121,6 +91,7 @@ def generate_value():
 
 def producer_1(list_d):
     while time.time() < t_end:
+        lock.acquire()
         #list_d.show()
         successful = list_d.append(generate_value(),'tail')
         if not successful:
@@ -129,8 +100,10 @@ def producer_1(list_d):
         else:
             print("Producer 1: Added A Node")
             #list_d.show()
+        lock.release()
 def producer_2(list_d):
     while time.time() < t_end:
+        lock.acquire()
         #list_d.show()
         successful = list_d.append(generate_value(),'head')
         if not successful:
@@ -139,26 +112,30 @@ def producer_2(list_d):
         else:
             print ("Producer 2: Added A Node")
             #list_d.show()
+        lock.release()
 def consumer_1(list_d):
     while time.time() < t_end:
         #list_d.show()
-        successful = list_d.remove(False)
+        lock.acquire()
+        successful = list_d.remove(1)
         if not successful:
             print("Consumer 1: No nodes deleted")
-            time.sleep(0.01)
         else:
             print("Consumer 1: Delete A Node")
+        lock.release()
             #list_d.show()
 def consumer_2(list_d):
     while time.time() < t_end:
         #list_d.show()
-        successful = list_d.remove(True)
+        lock.acquire()
+        successful = list_d.remove(0)
         if not successful:
             print("Consumer 2: No nodes deleted")
             time.sleep(0.01);
         else:
             print("Consumer 2: Delete A Node")
             #list_d.show()
+        lock.release()
 
 
 d = DoubleList()
