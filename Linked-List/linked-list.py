@@ -11,7 +11,7 @@ LIST_LIMIT = 20
 INT_LIMIT = 40
 
 # Duration in seconds
-t_end = time.time() + 10 
+t_end = time.time() + 20
 
 # Threading lock
 lock = Lock()
@@ -48,13 +48,13 @@ class DoubleList(object):
             if self.head is None:
                 self.head = self.tail = new_node
                 return True
-            elif end == 'tail':
-                new_node.prev = self.tail
-                new_node.next = None
-                self.tail.next = new_node
-                self.tail = new_node
-                return True
             elif end == 'head':
+                new_node.next = self.head
+                new_node.prev = None
+                self.head.prev = new_node
+                self.head = new_node
+                return True
+            elif end == 'tail':
                 new_node.next = self.head
                 new_node.prev = None
                 self.head.prev = new_node
@@ -128,8 +128,8 @@ def producer(id, list_d, end):
             print("Producer "+str(id)+": No nodes added")
             f.write("Producer "+str(id)+": No nodes added\n")
         else:
-            print("Producer "+str(id)+": Added A Node")
-            f.write("Producer "+str(id)+": Added A Node\n")
+            print("Producer "+str(id)+": Added A Node to the " + str(end))
+            f.write("Producer "+str(id)+": Added A Node to the " + str(end) + "\n")
         list_d.show()
         lock.release()
 
@@ -160,12 +160,12 @@ d.append(generate_value(), 'head')
 d.show() #Print that list
 
 p1 = threading.Thread(target=producer, args=(1, d,'head',))  #init producer 1, have it push to the head
-p2 = threading.Thread(target=producer, args=(2, d,'head',))  #init producer 2, have it push to the tail
+p2 = threading.Thread(target=producer, args=(2, d,'tail',))  #init producer 2, have it push to the tail
 c1 = threading.Thread(target=consumer, args=(1, d, 0,))      #init consumer 1, have it remove even nodes
 c2 = threading.Thread(target=consumer, args=(2, d, 1,))      #init consumer 2, have it remove odd nodes
 
 #Start up the threads
 p1.start()
-p2.start()
 c1.start()
+p2.start()
 c2.start()

@@ -1,0 +1,203 @@
+Date: 10/09/2015
+Time: 15:05:53
+==========
+26 29 25 
+Producer 1: Added A Node to thetail
+26 29 25 23 
+Producer 2: Added A Node to thehead
+29 26 29 25 23 
+Consumer 1: Deleted even Node
+29 29 25 23 
+Consumer 2: Deleted odd Node
+29 25 23 
+Producer 1: Added A Node to thetail
+29 25 23 7 
+Producer 2: Added A Node to thehead
+3 29 25 23 7 
+Consumer 1: No nodes deleted
+3 29 25 23 7 
+Consumer 2: Deleted odd Node
+29 25 23 7 
+Producer 1: Added A Node to thetail
+29 25 23 7 21 
+Producer 2: Added A Node to thehead
+31 29 25 23 7 21 
+Consumer 1: No nodes deleted
+31 29 25 23 7 21 
+Consumer 2: Deleted odd Node
+29 25 23 7 21 
+Producer 1: Added A Node to thetail
+29 25 23 7 21 39 
+Producer 2: Added A Node to thehead
+28 29 25 23 7 21 39 
+Consumer 1: Deleted even Node
+29 25 23 7 21 39 
+Consumer 2: Deleted odd Node
+25 23 7 21 39 
+Producer 1: Added A Node to thetail
+25 23 7 21 39 36 
+Producer 2: Added A Node to thehead
+18 25 23 7 21 39 36 
+Consumer 1: Deleted even Node
+25 23 7 21 39 36 
+Consumer 2: Deleted odd Node
+23 7 21 39 36 
+Producer 1: Added A Node to thetail
+23 7 21 39 36 20 
+Producer 2: Added A Node to thehead
+38 23 7 21 39 36 20 
+Consumer 1: Deleted even Node
+23 7 21 39 36 20 
+Consumer 2: Deleted odd Node
+7 21 39 36 20 
+Producer 1: Added A Node to thetail
+7 21 39 36 20 9 
+Producer 2: Added A Node to thehead
+37 7 21 39 36 20 9 
+Consumer 1: Deleted even Node
+37 7 21 39 20 9 
+Consumer 2: Deleted odd Node
+7 21 39 20 9 
+Producer 1: Added A Node to thetail
+7 21 39 20 9 17 
+Producer 2: Added A Node to thehead
+36 7 21 39 20 9 17 
+Consumer 1: Deleted even Node
+7 21 39 20 9 17 
+Consumer 2: Deleted odd Node
+21 39 20 9 17 
+Producer 1: Added A Node to thetail
+21 39 20 9 17 27 
+Producer 2: Added A Node to thehead
+12 21 39 20 9 17 27 
+Consumer 1: Deleted even Node
+21 39 20 9 17 27 
+Consumer 2: Deleted odd Node
+39 20 9 17 27 
+Producer 1: Added A Node to thetail
+39 20 9 17 27 11 
+Producer 2: Added A Node to thehead
+15 39 20 9 17 27 11 
+Consumer 1: Deleted even Node
+15 39 9 17 27 11 
+Consumer 2: Deleted odd Node
+39 9 17 27 11 
+Producer 1: Added A Node to thetail
+39 9 17 27 11 31 
+Producer 2: Added A Node to thehead
+8 39 9 17 27 11 31 
+Consumer 1: Deleted even Node
+39 9 17 27 11 31 
+Consumer 2: Deleted odd Node
+9 17 27 11 31 
+Producer 1: Added A Node to thetail
+9 17 27 11 31 20 
+Producer 2: Added A Node to thehead
+13 9 17 27 11 31 20 
+Consumer 1: Deleted even Node
+13 9 17 27 11 31 
+Consumer 2: Deleted odd Node
+9 17 27 11 31 
+Producer 1: Added A Node to thetail
+9 17 27 11 31 
+Producer 2: Added A Node to thehead
+34 9 17 27 11 31 
+Consumer 1: Deleted even Node
+9 17 27 11 31 
+Consumer 2: Deleted odd Node
+17 27 11 31 
+Producer 1: Added A Node to thetail
+17 27 11 31 
+Producer 2: Added A Node to thehead
+7 17 27 11 31 
+Consumer 1: No nodes deleted
+7 17 27 11 31 
+Consumer 2: Deleted odd Node
+17 27 11 31 
+Producer 1: Added A Node to thetail
+17 27 11 31 
+Producer 2: Added A Node to thehead
+23 17 27 11 31 
+Consumer 1: No nodes deleted
+23 17 27 11 31 
+Consumer 2: Deleted odd Node
+17 27 11 31 
+Producer 1: Added A Node to thetail
+17 27 11 31 
+Producer 2: Added A Node to thehead
+37 17 27 11 31 
+Consumer 1: No nodes deleted
+37 17 27 11 31 
+Consumer 2: Deleted odd Node
+17 27 11 31 
+Producer 1: Added A Node to thetail
+17 27 11 31 
+Producer 2: Added A Node to thehead
+37 17 27 11 31 
+Consumer 1: No nodes deleted
+37 17 27 11 31 
+Consumer 2: Deleted odd Node
+17 27 11 31 
+Producer 1: Added A Node to thetail
+17 27 11 31 
+Producer 2: Added A Node to thehead
+39 17 27 11 31 
+Consumer 1: No nodes deleted
+39 17 27 11 31 
+Consumer 2: Deleted odd Node
+17 27 11 31 
+Producer 1: Added A Node to thetail
+17 27 11 31 
+Producer 2: Added A Node to thehead
+6 17 27 11 31 
+Consumer 1: Deleted even Node
+17 27 11 31 
+Consumer 2: Deleted odd Node
+27 11 31 
+Producer 1: Added A Node to thetail
+27 11 31 
+Producer 2: Added A Node to thehead
+34 27 11 31 
+Consumer 1: Deleted even Node
+27 11 31 
+Consumer 2: Deleted odd Node
+11 31 
+Producer 1: Added A Node to thetail
+11 31 
+Producer 2: Added A Node to thehead
+37 11 31 
+Consumer 1: No nodes deleted
+37 11 31 
+Consumer 2: Deleted odd Node
+11 31 
+Producer 1: Added A Node to thetail
+11 31 
+Producer 2: Added A Node to thehead
+29 11 31 
+Consumer 1: No nodes deleted
+29 11 31 
+Consumer 2: Deleted odd Node
+11 31 
+Producer 1: Added A Node to thetail
+11 31 
+Producer 2: Added A Node to thehead
+37 11 31 
+Consumer 1: No nodes deleted
+37 11 31 
+Consumer 2: Deleted odd Node
+11 31 
+Producer 1: Added A Node to thetail
+11 31 
+Producer 2: Added A Node to thehead
+26 11 31 
+Consumer 1: Deleted even Node
+11 31 
+Consumer 2: Deleted odd Node
+31 
+Producer 1: Added A Node to thetail
+31 
+Producer 2: Added A Node to thehead
+16 31 
+Consumer 1: Deleted even Node
+31 
+Buffer is empty

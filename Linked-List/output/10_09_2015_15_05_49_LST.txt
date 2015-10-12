@@ -1,0 +1,43 @@
+Date: 10/09/2015
+Time: 15:05:49
+==========
+35 20 29 
+Producer 1: Added A Node to thetail
+35 20 29 21 
+Producer 2: Added A Node to thehead
+3 35 20 29 21 
+Consumer 1: Deleted even Node
+3 35 29 21 
+Consumer 2: Deleted odd Node
+35 29 21 
+Producer 1: Added A Node to thetail
+35 29 21 8 
+Producer 2: Added A Node to thehead
+25 35 29 21 8 
+Consumer 1: Deleted even Node
+25 35 29 21 
+Consumer 2: Deleted odd Node
+35 29 21 
+Producer 1: Added A Node to thetail
+35 29 21 
+Producer 2: Added A Node to thehead
+0 35 29 21 
+Consumer 1: Deleted even Node
+35 29 21 
+Consumer 2: Deleted odd Node
+29 21 
+Producer 1: Added A Node to thetail
+29 21 
+Producer 2: Added A Node to thehead
+10 29 21 
+Consumer 1: Deleted even Node
+29 21 
+Consumer 2: Deleted odd Node
+21 
+Producer 1: Added A Node to thetail
+21 
+Producer 2: Added A Node to thehead
+6 21 
+Consumer 1: Deleted even Node
+21 
+Buffer is empty
