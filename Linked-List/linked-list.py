@@ -1,3 +1,9 @@
+##############################################
+#   Nathan Robertus                          #
+#   CSCI 460 - Operating Systems             #
+#   Homework 2 - Producer/Consumer problem   #
+##############################################
+
 #IMPORTS
 import threading
 import sys
@@ -30,6 +36,18 @@ f.write("Time: " + start_time.replace("_", ":") + "\n")
 f.write("="*10 + "\n")
 
 #LINKED LIST IMPLEMENTATION
+
+#################################################################
+#
+#   ************PLEASE NOTE******************
+#   While Python has built-in protected linked lists, 
+#   I implemented my own here. Each instance of the Node class
+#   is pushed into an instance of the DoubleList class, 
+#   and all of the functions for pushing nodes to the head and
+#   tail, removing even and odd nodes, and showing the current
+#   state of the list were hand-written by me.
+#
+#################################################################
 class Node(object):
  
     def __init__(self, data, prev, next):

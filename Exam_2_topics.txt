@@ -1,0 +1,12 @@
+1. Process management:
+	Deadlock, starvation, cooperation
+
+2. Reader/Writer problem, consumer/producer problem
+
+3. Multiprocessor scheduling
+	Thread scheduling
+
+4. File management
+
+5. Device management
+	Disk scheduling algorithms

@@ -1,0 +1,51 @@
+Nathan Robertus
+CSCI 460
+Assignment 3========================PROGRAM_OUTPUT========================
+
+
+PROVIDED INPUT
+
+FCFS
+Total Time: 229.3
+Average:79.84
+Standard deviation:37.6803715481
+Variance:1419.8104
+SSTF
+Total Time: 203.1
+Average:65.34
+Standard deviation:54.0174823553
+Variance:2917.8884
+LOOK
+Total Time: 203.1
+Average:65.34
+Standard deviation:54.0174823553
+Variance:2917.8884
+CLOOK
+Total Time: 208.3
+Average:63.6428571429
+Standard deviation:24.3192373672
+Variance:591.425306122
+
+
+RANDOM INPUT 
+
+FCFS
+Total Time: 1217.8
+Average:581.95
+Standard deviation:327.141424005
+Variance:107021.5113
+SSTF
+Total Time: 771.5
+Average:354.546
+Standard deviation:219.113741431
+Variance:48010.831684
+LOOK
+Total Time: 790.6
+Average:368.91
+Standard deviation:218.784400038
+Variance:47866.6137
+CLOOK
+Total Time: 795.1
+Average:366.80625
+Standard deviation:208.672942271
+Variance:43544.3968359
